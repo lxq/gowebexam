@@ -1,0 +1,14 @@
+{{if .Success}}
+    <h1>感谢提交信息</h1>
+{{else}}
+    <h1>联系方式</h1>
+    <form method="POST">
+        <label>Email:</label> <br/>
+        <input type="text" name="email"> <br/>
+        <label>Subject:</label> <br/>
+        <input type="text" name="subject"> <br/>
+        <label>内容：</label> <br/>
+        <textarea name="message"></textarea> <br/>
+        <input type="submit">
+    </form>
+{{end}}
