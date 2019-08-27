@@ -1,0 +1,23 @@
+<!-- websocket html -->
+<input id="input" type="text" />
+<!-- onclick 里面必须是函数的调用方法，如：onSend() -->
+<button onclick="onSend()">发送</button>
+<pre id="output"></pre>
+<script>
+    var input = document.getElementById("input");
+    var output = document.getElementById("output");
+
+    // 创建websocket连接
+    var socket = new WebSocket("ws://localhost:80/echo");
+    socket.onopen = function() {
+        output.innerHTML += "状态：已连接.\n";
+    };
+    socket.onmessage = function(e) {
+        output.innerHTML += "数据: " + e.data + "\n";
+    };
+
+    function onSend() {
+        socket.send(input.value);
+        input.value = "";
+    }
+</script>
