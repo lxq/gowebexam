@@ -3,6 +3,7 @@
  * 本练习重点是：
  * 1. encoding/json 库的使用;
  * 2. 如何读写http的json数据.
+ * 3. 测试方法：在firefox中安装RestClient插件，发送数据为：{"firstname":"Elon","lastname":"Musk","age":48}
  *
  * @date 2019/8/26
  * @author Neo Lin
@@ -16,7 +17,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"html/template"
+
+	// "html/template"
 	"net/http"
 )
 
@@ -27,9 +29,9 @@ type User struct {
 	Age       int    `json:"age"`
 }
 
-var (
-	tmpl = template.Must(template.ParseFiles("json.html"))
-)
+// var (
+// 	tmpl = template.Must(template.ParseFiles("json.html"))
+// )
 
 func enc(w http.ResponseWriter, r *http.Request) {
 	neo := User{
@@ -42,10 +44,10 @@ func enc(w http.ResponseWriter, r *http.Request) {
 }
 
 func dec(w http.ResponseWriter, r *http.Request) {
-	if http.MethodPost != r.Method {
-		tmpl.Execute(w, nil)
-		return
-	}
+	// if http.MethodPost != r.Method {
+	// 	tmpl.Execute(w, nil)
+	// 	return
+	// }
 
 	// 以下获取数据
 	var usr User
